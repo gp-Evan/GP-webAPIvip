@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>通过标签名获取元素2</title>
+</head>
+<body>
+<div id="container">
+    <div>1111</div>
+    <div>2222</div>
+    <p id="p">pppp</p>
+    <span>span</span>
+</div>
+<div>hello</div>
+<div id="main">world</div>
+<div>gupao</div>
+<p>heihei</p>
+<span>111</span>
+<script>
+    //获取id为container的div里边两个div
+    /**
+     * 发现两种方法都不适合
+     * 1. byTagname 会获取别的
+     * 2. byId 需要设置多个id
+     *
+     * 把它分为两个步骤，
+     * 1. 获取 container
+     * 2. 在container里边去找div
+     */
+    var container = document.getElementById('container');
+    var divs = container.getElementsByTagName('div');
+    console.log(divs);
+
+    console.dir(container);
+    // 为什么？
+    // console.log(container.getElementById('pp'));
+</script>
+</body>
+</html>

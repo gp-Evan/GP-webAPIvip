@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>获取页面元素</title>
+</head>
+<body>
+<div>hello</div>
+<div id="main">world</div>
+<div>gupao</div>
+<p id="p1">p标签</p>
+<script>
+    // 一般情况下，放在 body的结束标签之前
+
+    // document   文档
+    var main = document.getElementById('main'); //  获取 元素 根据  id
+    console.log(main);
+    console.log(typeof main);
+    console.dir(main);
+    // HTMLDivElement
+    console.log(main instanceof HTMLDivElement);
+
+    var p1 = document.getElementById('p1');
+    console.dir(p1); //HTMLParagraphElement
+    // 文档对象的类型不需要去记
+
+    // 对象也是有类型的
+    var arr = new Array();
+    console.dir(arr);
+</script>
+</body>
+</html>

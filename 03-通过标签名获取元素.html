@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>通过标签名获取元素</title>
+</head>
+<body id="aa">
+<div>hello</div>
+<div id="main">world</div>
+<div>gupao</div>
+<p id="p1">p标签</p>
+<script>
+    var divs = document.getElementsByTagName('div'); // 返回值是复数
+//    console.dir(divs); //HTMLCollection  元素集合
+    // 集合 与数组 有些类似
+    // 有length  索引   还有main属性--->对应元素的id
+
+    // 是不是数组?
+//    console.log(divs instanceof Array); // false
+    // 伪数组
+
+    for (var i = 0; i < divs.length; i++) {
+        console.log(divs[i]);
+        // 每一个元素又是什么类型？
+        // 都是 HTMLDivElement
+    }
+
+
+    // document.getElementsByTagName 获取的集合，是动态集合
+    /*var bb = document.createElement('div');
+    document.getElementById('aa').appendChild(bb);
+    console.log(divs);*/
+</script>
+</body>
+</html>

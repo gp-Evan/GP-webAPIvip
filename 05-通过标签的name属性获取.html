@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>通过标签name属性获取</title>
+</head>
+<body>
+<div id="main"></div>
+<div name="main"></div>
+<div class="a"></div>
+<div class="b"></div>
+<div class="a"></div>
+<script>
+    // document.getElementsByName()
+    // 根据标签的name属性来获取元素
+    var divs = document.getElementsByName('main');
+    console.log(divs);
+
+
+    // document.getElementsByClassName()
+    // 根据标签的class属性来获取元素
+    // 有浏览器兼容性问题 IE9以上
+
+
+    // 查询选择器
+    // document.querySelector()
+    // 根据 css选择器来查找元素
+
+    var main = document.querySelector('#main');
+    console.log(main);
+    // 可以替代getElementById
+    // 利用 选择器更加灵活
+
+    var element = document.querySelector('.a');
+    console.log(element);
+    // 只能获取1个
+
+    var elements = document.querySelectorAll('.a');
+    // 匹配选择器所有
+    console.log(elements);
+
+    // 兼容性问题
+    // IE8 以上 ，在移动端，没有兼容性问题
+</script>
+</body>
+</html>
