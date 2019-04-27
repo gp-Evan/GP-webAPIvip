@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>点击按钮切换显示隐藏</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="隐藏"/>
+<div id="dv"></div>
+<script>
+    // 1. 获取元素
+    var btn = document.getElementById('btn');
+    // 获取 div的时机  应该放在 事件处理函数中，更节省性能
+    // 2. 注册事件
+    var isShow = true;
+    btn.onclick = function () {
+        var dv = document.getElementById('dv');
+        // 设置class属性来控制显示隐藏
+        // 一般 元素的属性 对应 标签的属性
+        // 这里有点特殊，class属性  叫 className
+        // 因为 class在 js中 是关键字，而关键字 不能作为变量或者属性名
+        /*dv.className = 'hide';
+
+
+        // 设置按钮中的文字
+        // btn.value = '显示';
+        // 另一种设置按钮的方式
+        this.value = '显示';
+        // 此时的 this 就是指的 btn*/
+
+        // 判断 什么时候隐藏 什么时候显示
+        if (isShow) {
+            dv.className = 'hide';
+            this.value = '显示';
+            isShow = false;
+        } else {
+            dv.className = 'show';
+            this.value = '隐藏';
+            isShow = true;
+        }
+    };
+
+
+    // this的几种情况
+    /**
+     * 1. 普通函数中的this        window
+     * 2. 构造函数中的this        当前构造函数创建的对象
+     * 3. 方法中的this            方法所属的对象
+     * 4. 事件处理函数中的this     事件源   可以看成是方法中的this
+     */
+
+    // 3. 控制div隐藏
+    // 4. 改变按钮中文字
+</script>
+</body>
+</html>

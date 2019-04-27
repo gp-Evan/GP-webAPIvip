@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>点击按钮切换图片</title>
+</head>
+<body>
+<img id="mp" src="../images/01-01.jpg" alt="" width="400" height="300"/>
+<br/>
+<input type="button" id="btn" value="点我"/>
+<script>
+    var btn = document.getElementById('btn');
+    var mp = document.getElementById('mp');
+
+    var flag = true;
+    btn.onclick = function () {
+        if (flag) {
+            console.log('a');
+            mp.src = '../images/01-02.jpg';
+            flag = false;
+        }else {
+            mp.src = '../images/01-01.jpg';
+            flag =  true;
+        }
+    };
+</script>
+</body>
+</html>

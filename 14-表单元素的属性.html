@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>表单元素的属性</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<br/>
+<input type="text" value="123" id="txt"/>
+<br/>
+<input type="button" value="设置" id="btn1"/>
+<script>
+    // 点击按钮 让 文本框禁用
+    // 用js操作文本框的disabled属性
+    // 获取元素，注册时间
+    var btn = document.getElementById('btn');
+    var txt = document.getElementById('txt');
+    btn.onclick = function(){
+
+
+        console.log(txt.value);
+        console.log(txt.type);
+
+        // 在dom里边，只有一个值的 属性 ，DOM中对应的 属性值 是 布尔类型  true或者 false
+        // disabled   checked   selected
+        // 这三个属性的值，只有一个，所以在DOM中他们的值是布尔类型的。
+        console.log(txt.disabled);
+        txt.disabled = true;
+    };
+
+
+    // 文本框禁用后，是否能通过其他方式设置值
+    var btn1 = document.getElementById('btn1');
+    btn1.onclick=function(){
+        txt.value = 'hello world!';
+    };
+
+    // 禁用后，依然可以通过 js 修改value属性
+
+</script>
+</body>
+</html>

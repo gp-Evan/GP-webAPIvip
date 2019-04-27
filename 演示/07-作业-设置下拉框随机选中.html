@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>设置下拉框随机选中</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/><br/>
+<select id="seCities">
+    <option value="1">北京</option>
+    <option value="2">上海</option>
+    <option value="3">深圳</option>
+    <option value="4">广州</option>
+    <option value="5">长沙</option>
+    <option value="6">武汉</option>
+</select>
+<script>
+    var btn = document.getElementById('btn');
+    btn.onclick = function () {
+        var options = document.getElementById('seCities').getElementsByTagName('option');
+        var random = Math.floor(Math.random() * options.length);
+        var option = options[random];
+        option.selected = true;
+    };
+</script>
+</body>
+</html>

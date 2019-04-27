@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>切换显示隐藏</title>
+    <style>
+        div {
+            width: 300px;
+            height: 200px;
+            background-color: #f00;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input id="btn" type="button" value="隐藏"/>
+<div class="show" id="dv"></div>
+<script>
+    var btn = document.getElementById('btn');
+    var dv = document.getElementById('dv');
+
+    var isShow = true;
+    btn.onclick = function () {
+        if (isShow) {
+            this.value = '显示';
+            dv.className = 'hide';
+            isShow = false;
+        } else {
+            this.value = '隐藏';
+            dv.className = 'show';
+            isShow = true;
+        }
+    };
+</script>
+</body>
+</html>

@@ -158,3 +158,142 @@ for (var i = 0; i < boxes.length; i++) {
 作业：
 
 > 上课案例全部敲一遍，特别是没有基础的
+
+## 事件
+
+事件：触发-响应机制
+
+Event接口表示在DOM中发生的任何事件，一些是用户生成的（例如鼠标或键盘事件），而其他由API生成。
+
+### 事件三要素
+
+- 事件源:触发(被)事件的元素
+- 事件类型:事件的触发方式(例如鼠标点击或键盘点击)
+- 事件处理程序:事件触发后要执行的代码(函数形式)
+
+### 事件的基本使用
+
+```javascript
+var box = document.getElementById('box');
+box.onclick = function() {
+  console.log('代码会在box被点击后执行');  
+};
+
+```
+
+### 案例
+
+- 点击按钮弹出提示框
+- 点击按钮切换图片
+
+## 属性操作
+
+### 非表单元素的属性
+
+href、title、id、src、className
+
+```javascript
+var link = document.getElementById('link');
+console.log(link.href);
+console.log(link.title);
+
+var pic = document.getElementById('pic');
+console.log(pic.src);
+```
+
+案例：
+
+​	点击按钮，切换img标签里的图片
+
+​	点击按钮显示隐藏div
+
+- innerHTML和innerText
+
+```javascript
+var box = document.getElementById('box');
+box.innerHTML = '我是文本<p>我会生成为标签</p>';
+console.log(box.innerHTML);
+box.innerText = '我是文本<p>我不会生成为标签</p>';
+console.log(box.innerText);
+```
+
+- HTML转义符
+
+```
+"		&quot;
+‘		&apos;
+&		&amp;
+<		&lt;    //less than  小于
+>		&gt;   // greater than  大于
+空格	   &nbsp;
+©		&copy;
+```
+
+- innerHTML和innerText的区别
+- innerText的兼容性处理
+
+### 类名操作
+
+- 修改标签的className属性相当于直接修改标签的类名
+
+```javascript
+var box = document.getElementById('box');
+box.className = 'clearfix';
+```
+
+### 表单元素属性
+
+- value 用于大部分表单元素的内容获取(option除外)
+
+- type 可以获取input标签的类型(输入框或复选框等)
+
+- disabled 禁用属性
+
+- checked 复选框选中属性
+
+- selected 下拉菜单选中属性
+
+  
+
+- 案例
+  - 点击按钮禁用文本框
+  - 搜索文本框
+  - 全选反选
+
+- 作业：
+  - 给文本框赋值，获取文本框的值
+  - 检测用户名是否是3-6位，密码是否是6-8位，如果不满足要求高亮显示文本框
+  - 设置下拉框中的选中项
+
+### 自定义属性操作
+
+- getAttribute() 获取标签行内属性
+- setAttribute() 设置标签行内属性
+- removeAttribute() 移除标签行内属性
+- 与element.属性的区别: 上述三个方法用于获取任意的行内属性。
+
+### 样式操作
+
+- 使用style方式设置的样式显示在标签行内
+
+```javascript
+var box = document.getElementById('box');
+box.style.width = '100px';
+box.style.height = '100px';
+box.style.backgroundColor = 'red';
+```
+
+- 注意
+
+  通过样式属性设置宽高、位置的属性类型是字符串，需要加上px
+
+### 案例
+
+- 开关灯
+- 点击按钮变色
+- 图片切换二维码案例
+- 当前输入的文本框高亮显示
+- 点击按钮改变div的大小和位置
+- 列表隔行变色、高亮显示
+- 京东商品展示
+- tab选项卡切换

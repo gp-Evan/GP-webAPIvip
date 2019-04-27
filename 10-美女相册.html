@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>美女相册</title>
+    <style type="text/css">
+        body {
+            font-family: "Helvetica", "Arial", serif;
+            color: #333;
+            background-color: #ccc;
+            margin: 1em 10%;
+        }
+
+        h1 {
+            color: #333;
+            background-color: transparent;
+        }
+
+        a {
+            color: #c60;
+            background-color: transparent;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            padding: 1em;
+            list-style: none;
+        }
+
+        #imagegallery {
+
+            list-style: none;
+        }
+
+        #imagegallery li {
+            margin: 0px 20px 20px 0px;
+            padding: 0px;
+            display: inline;
+        }
+
+        #imagegallery li a img {
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<h2>美女相册</h2>
+
+<ul id="imagegallery">
+    <li><a href="images/01-01.jpg" title="美女A">
+        <img src="images/01-01-small.jpg" width="100" alt="美女1"/>
+    </a></li>
+    <li><a href="images/03-02.jpg" title="美女B">
+        <img src="images/03-02-small.jpg" width="100" alt="美女2"/>
+    </a></li>
+    <li><a href="images/03-03.jpg" title="美女C">
+        <img src="images/03-03-small.jpg" width="100" alt="美女3"/>
+    </a></li>
+    <li><a href="images/03-04.jpg" title="美女D">
+        <img src="images/03-04-small.jpg" width="100" alt="美女4"/>
+    </a></li>
+</ul>
+<div style="clear:both"></div>
+<!--显示大图的-->
+<img id="image" src="images/placeholder.png" alt="" width="460"/>
+<p id="des">选择一个图片</p>
+<script>
+    // 分析结构
+    // 提高用户体验感
+
+    // 1. 获取所有的a标签
+    var imagegallery = document.getElementById('imagegallery');
+    var links = imagegallery.getElementsByTagName('a');
+    // 2. 给所有的a标签注册事件
+    for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+        // 当循环结束后，link取的是最后一个a，
+        // 所以 总会设置 最后一个a的href
+        // 在事件处理函数中，this指向事件源
+        link.onclick = function () {
+            // 4.设置切换图片
+            // console.log('aaa');
+            var image = document.getElementById('image');
+            image.src = this.href;
+
+            // 5. 设置p标签内容
+            var des = document.getElementById('des');
+            // 当前点击的title属性
+            // this.title
+            // 设置 p标签里边的内容
+            // console.dir(des);
+            des.innerText = this.title;
+
+
+            // 3. 取消a标签的默认行为
+            return false;
+        };
+    }
+    // 4. 切换图片
+    // 5. 设置p标签的内容
+</script>
+</body>
+</html>

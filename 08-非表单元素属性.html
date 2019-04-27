@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>非表单元素属性</title>
+</head>
+<body>
+<a id="link" href="http://www.gupaoedu.com/" title="我是咕泡教育">咕泡学院</a>
+<img id="mp" src="./images/01-02.jpg" alt="凤姐"/>
+<script>
+    // 获取 两个标签对应的一些属性
+    // 首先要获取两个标签
+    var link = document.getElementById('link');
+    var mp = document.getElementById('mp');
+
+
+    // 一般情况，元素的属性，与标签的属性是对应的
+    console.log(link.id, link.href, link.title);
+    // 注意src获取到的是一个 绝对路径，以后使用的时候要特别注意
+    console.log(mp.id, mp.src, mp.alt);
+
+
+    // 设置DOM对象的属性
+    link.href = 'http://www.baidu.com/';
+    link.title = '我要跳转到百度';
+</script>
+</body>
+</html>

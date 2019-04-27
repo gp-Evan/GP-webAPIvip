@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>点击按钮切换图片</title>
+</head>
+<body>
+<img id="mp" src="./images/01-01.jpg" alt="" width="400" height="300"/>
+<br/>
+<input type="button" id="btn" value="点我"/>
+<script>
+    // 1.获取页面中的两个元素
+    var btn = document.getElementById('btn');
+    var mp = document.getElementById('mp');
+    var flag = true;
+    // 2. 给按钮注册事件
+    btn.onclick = function () {
+        // 3. 切换图片 （非常简单）
+        // 把另一张图片的src重新赋值给 mp的src属性就ok了。
+        // 一般情况下，元素 与对应的标签具有相同的属性，它把对应的属性进行了一个封装，所以我们可以直接点出来
+        //mp.src = './images/01-02.jpg';
+
+        // 点一次发现，切换不回去了，因为我们每次 处理的时候，始终把src 设置成了 02.jpg
+
+        // 我们可以设置一个标识，对应相对的图片，这边这有两种情况，就可以用true和false
+        if (flag) {
+            mp.src = './images/01-02.jpg';
+            // 更改flag的值
+            flag = false;
+        } else {
+            mp.src = './images/01-01.jpg';
+            flag = true;
+        }
+    };
+</script>
+</body>
+</html>

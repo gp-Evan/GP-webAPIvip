@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>自定义属性</title>
+</head>
+<body>
+<div id="zs" name="zs" age="18" personId="1">张三</div>
+<script>
+    // age 是 原本没有的属性
+    var zs = document.getElementById('zs');
+    // 自有属性
+    console.log(zs.id);
+
+
+    // 自定义属性
+    console.log(zs.name);
+    console.log(zs.age);
+    console.log(zs.personId);
+    // 并不存在两个属性，因为DOM没有把自定义属性封装成 DOM元素的属性
+
+
+    // 如何获取自定义属性
+    console.log(zs.getAttribute('name'));
+    console.log(zs.getAttribute('age'));
+    console.log(zs.getAttribute('personId'));
+
+
+    // 设置自定义属性
+    zs.setAttribute('score', '99');
+</script>
+</body>
+</html>

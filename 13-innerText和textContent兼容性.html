@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>innerText和textContent兼容性</title>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<script>
+    /**
+     * 用来演示兼容性处理的原理
+     * 有很多库已经帮我们做好了兼容性处理的问题，比如说 JQuery
+     *
+     * 对于 chrome ，两者属性都支持
+     * 对于  firefox  ,  低版本 只支持 textContent   ,高版本，两者都支持
+     * 对于 IE,   IE8以下，只支持 innerText ，IE9 两者都支持
+     *
+     * 浏览器大战，chrome 为啥胜出
+     *
+     */
+    var box = document.getElementById('box');
+    /*console.log(box.innerText);
+    console.log(box.textContent);*/
+    // 具体  innerText 和 textContent 还有些 细微的区别，自己去百度科普下
+
+    /*// 当属性不存在，返回 undefined
+    console.log(typeof box.a);
+    // 当属性存在，返回该属性的类型
+    console.log(typeof box.id);*/
+
+    // 处理 innerText 兼容性
+    function getInnerText(ele) {
+        // 判断 当前浏览器 是否支持  元素的 innerText 属性
+        /*if (typeof ele.innerText !== 'undefined') {
+            return ele.innerText;
+        } else {
+            return ele.textContent;
+        }*/
+
+
+        return ele.innerText ? ele.innerText : ele.textContent;
+    }
+
+    console.log(getInnerText(box));
+
+
+    // 关于设置元素中的内容
+    /**
+     * innerText/textContent     当设置不含标签的内容的时候，应该使用innerText/textContent，这样效率更高
+     * innerHTML  会去解析HTML标签
+     */
+
+</script>
+</body>
+</html>

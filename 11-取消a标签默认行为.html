@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>取消a标签默认行为</title>
+</head>
+<body>
+<a href="http://www.baidu.com" id="link">百度</a>
+<script>
+    var link = document.getElementById('link');
+    link.onclick = function(){
+        // console.log('我执行了吗？');
+        alert('点了！');
+
+        // 取消 a 标签的默认跳转行为
+        return false;
+    };
+</script>
+</body>
+</html>

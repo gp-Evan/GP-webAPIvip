@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>美女相册</title>
+    <style type="text/css">
+        body {
+            font-family: "Helvetica", "Arial", serif;
+            color: #333;
+            background-color: #ccc;
+            margin: 1em 10%;
+        }
+
+        h1 {
+            color: #333;
+            background-color: transparent;
+        }
+
+        a {
+            color: #c60;
+            background-color: transparent;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            padding: 1em;
+            list-style: none;
+        }
+
+        #imagegallery {
+
+            list-style: none;
+        }
+
+        #imagegallery li {
+            margin: 0px 20px 20px 0px;
+            padding: 0px;
+            display: inline;
+        }
+
+        #imagegallery li a img {
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<h2>美女相册</h2>
+
+<ul id="imagegallery">
+    <li><a href="../images/01-01.jpg" title="美女A">
+        <img src="../images/01-01-small.jpg" width="100" alt="美女1"/>
+    </a></li>
+    <li><a href="../images/03-02.jpg" title="美女B">
+        <img src="../images/03-02-small.jpg" width="100" alt="美女2"/>
+    </a></li>
+    <li><a href="../images/03-03.jpg" title="美女C">
+        <img src="../images/03-03-small.jpg" width="100" alt="美女3"/>
+    </a></li>
+    <li><a href="../images/03-04.jpg" title="美女D">
+        <img src="../images/03-04-small.jpg" width="100" alt="美女4"/>
+    </a></li>
+</ul>
+<div style="clear:both"></div>
+<!--显示大图的-->
+<img id="image" src="../images/placeholder.png" alt="" width="460"/>
+<p id="des">选择一个图片</p>
+<script>
+    // 图片
+
+    var aObjs = document.getElementById("imagegallery").getElementsByTagName("a");
+    //循环遍历所有的a标签
+    for (var i = 0; i < aObjs.length; i++) {
+        //为每个a标签注册点击事件
+        aObjs[i].onclick = function () {
+            //为id为image的标签的src赋值
+            document.getElementById("image").src = this.href;
+            //为p标签赋值
+            document.getElementById("des").innerText = this.title;
+            //阻止超链接默认的跳转
+            return false;
+        };
+    }
+
+</script>
+</body>
+</html>

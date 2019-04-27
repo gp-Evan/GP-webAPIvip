@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>innerHTML和innerText</title>
+</head>
+<body>
+<div id="box">
+    我是一个div
+    <span>这是一个span</span>
+</div>
+<script>
+    // 两个特殊的属性
+
+    var box = document.getElementById('box');
+    // 获取标签的属性
+    // console.log(box.id);
+
+    // MDN  百度   如何用js获取标签中的内容
+
+    console.dir(box);
+
+    // innerHTML    innerText
+    // 获取开始标签和结束标签之间的内容
+    console.log(box.innerHTML);
+    // innerHTML 获取内容的时候，如果内容中有标签，也会把标签包括空白字符获取到
+    console.log(box.innerText);
+    // innerText 获取内容的时候，如果内容中有标签，会把标签过滤掉  前后 空白字符也过滤掉
+
+
+    // 利用 innerHTML 和 innerText 设置 标签中间的内容
+
+    box.innerText = '';  // 清空内容
+
+    // box.innerHTML = '<strong>咕泡</strong>学院';
+    box.innerText = '<strong>咕泡</strong>学院';  // 标签原封不动 解析
+</script>
+</body>
+</html>
