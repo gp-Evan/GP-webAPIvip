@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>样式操作</title>
+</head>
+<body>
+<input type="button" value="修改" id="btn"/>
+<div id="box" style="width: 200px;height: 200px;background-color: red;"></div>
+<script>
+    // 进入webapi也有几天了。
+    // 获取页面元素 ，应该是滚瓜烂熟了，此时我们可以写一段封装代码
+    function my$(id) {
+        return document.getElementById(id);
+    }
+
+    // 点击按钮设置div的宽高和背景
+    // style 也可以看成是一个属性
+    my$('btn').onclick = function () {
+        //my$('box').style="width: 300px;height: 400px;background: yellow;";
+        my$('box').style.width = '300px';
+        my$('box').style.height = '400px';
+        // my$('box').style.background-color = "green";
+        // css属性中，有多个单词连写的，在DOM操作时，把-去掉，遵循驼峰命名法
+        my$('box').style.backgroundColor='green';
+    };
+
+</script>
+</body>
+</html>

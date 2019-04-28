@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>隔行变色</title>
+</head>
+<body>
+<input type="button" value="隔行变色" id="btn"/>
+<ul id="uu">
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+    <li>06</li>
+    <li>07</li>
+    <li>08</li>
+    <li>09</li>
+    <li>10</li>
+</ul>
+<script src="./js/common.js"></script>
+<script>
+    // 点击按钮  奇红偶黄
+    my$('btn').onclick = function () {
+        // 隔行变色
+        var lis = my$('uu').getElementsByTagName('li');
+        // 隔行？
+        for (var i = 0; i < lis.length; i++) {
+            /*if (i % 2 === 0) {
+                // 偶数
+                lis[i].style.backgroundColor = 'red';
+            } else {
+                // 奇数
+                lis[i].style.backgroundColor = 'yellow';
+            }*/
+            lis[i].style.backgroundColor = i % 2 === 0 ? 'red' : 'yellow';
+        }
+
+    };
+</script>
+</body>
+</html>

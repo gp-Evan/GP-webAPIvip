@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>网页开关灯</title>
+    <style>
+        .cls {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="on/off" id="btn"/>
+<script src="./js/common.js"></script>
+<script>
+    my$('btn').onclick = function () {
+        // 获取 body标签
+        // document 文档
+        // document.body  只有一个body标签，所以能直接点出来
+        document.body.className = document.body.className !== 'cls' ? 'cls' : '';
+    };
+</script>
+</body>
+</html>

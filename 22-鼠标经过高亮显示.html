@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>鼠标经过高亮显示</title>
+    <style>
+        ul {
+            list-style-type: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul id="uu">
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+    <li>06</li>
+    <li>07</li>
+    <li>08</li>
+    <li>09</li>
+    <li>10</li>
+</ul>
+<script src="./js/common.js"></script>
+<script>
+    // 两个事件
+    var lis = my$('uu').getElementsByTagName('li');
+    for (var i = 0; i < lis.length; i++) {
+        // 鼠标进入
+        lis[i].onmouseover = function () {
+            this.style.backgroundColor = 'red';
+        };
+        // 鼠标离开
+        lis[i].onmouseout = function () {
+            // 恢复到 默认状态
+            this.style.backgroundColor = '';
+        };
+    }
+</script>
+</body>
+</html>

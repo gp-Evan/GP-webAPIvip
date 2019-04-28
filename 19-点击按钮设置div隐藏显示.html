@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>点击按钮设置div显示隐藏</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="隐藏" id="btn"/>
+<div id="box"></div>
+<script src="./js/common.js"></script>
+<script>
+    // 引入commoin.js
+    /*my$('btn').onclick = function () {
+        my$('box').style.display = 'none';
+    };*/
+    var flag = true;
+    my$('btn').onclick = function () {
+        if (flag) {
+            my$('box').style.display = 'none';
+            this.value = '显示';
+            flag = false;
+        } else {
+            my$('box').style.display = 'block';
+            this.value = '隐藏';
+            flag = true;
+        }
+    };
+</script>
+</body>
+</html>

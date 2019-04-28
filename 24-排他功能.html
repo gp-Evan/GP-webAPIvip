@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>排他功能</title>
+</head>
+<body>
+<input type="button" value="没怀孕"/>
+<input type="button" value="没怀孕"/>
+<input type="button" value="没怀孕"/>
+<input type="button" value="没怀孕"/>
+<input type="button" value="没怀孕"/>
+<input type="button" value="没怀孕"/>
+<script>
+    //获取所有的按钮,分别注册点击事件
+    var btnObjs = document.getElementsByTagName("input");
+    //循环遍历所有的按钮
+    for (var i = 0; i < btnObjs.length; i++) {
+        //为每个按钮都要注册点击事件
+        btnObjs[i].onclick = function () {
+            //把所有的按钮的value值设置为默认的值:没怀孕
+            for (var j = 0; j < btnObjs.length; j++) {
+                btnObjs[j].value = "没怀孕";
+            }
+            //当前被点击的按钮设置为:怀孕了
+            this.value = "怀孕了";
+        };
+
+    }
+
+</script>
+</body>
+</html>

@@ -228,7 +228,7 @@ console.log(box.innerText);
 - innerHTML和innerText的区别
 - innerText的兼容性处理
 
-### 类名操作
+类名操作
 
 - 修改标签的className属性相当于直接修改标签的类名
 
@@ -285,11 +285,9 @@ box.style.backgroundColor = 'red';
 
 ### 案例
 
+- 点击按钮改变div的大小和颜色
+- 点击按钮设置div显示隐藏
 - 开关灯
-- 点击按钮变色
+- 列表隔行变色
+- 鼠标经过高亮显示
 - 图片切换二维码案例
-- 当前输入的文本框高亮显示
-- 点击按钮改变div的大小和位置
-- 列表隔行变色、高亮显示
-- 京东商品展示
-- tab选项卡切换
