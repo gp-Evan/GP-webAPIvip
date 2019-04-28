@@ -1,11 +1,7 @@
----
-学习目标：
-    - 掌握API和Web API的概念
-    - 掌握常见的浏览器提供的API的调用方式
-    - 能利用API开发常见的交互功能
----
-
-
+> 学习目标：
+>    - 掌握API和Web API的概念
+> - 掌握常见的浏览器提供的API的调用方式
+> - 能利用API开发常见的交互功能
 
 # WEB API
 
@@ -145,15 +141,15 @@ for (var i = 0; i < boxes.length; i++) {
 
 > 掌握
 >
-> 	1. getElementById
->  	2. getElementsByTagName
+> 1.  getElementById
+> 2. getElementsByTagName
 >
 > 了解
 >
-> 	1. getElementsByName
->  	2. getElementsByClassName
->  	3. querySelector
->  	4. querySelectorAll
+> 1. getElementsByName
+> 2. getElementsByClassName
+> 3. querySelector
+> 4. querySelectorAll
 
 作业：
 
