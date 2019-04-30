@@ -5,12 +5,12 @@
     <title>排他功能</title>
 </head>
 <body>
-<input type="button" value="没怀孕"/>
-<input type="button" value="没怀孕"/>
-<input type="button" value="没怀孕"/>
-<input type="button" value="没怀孕"/>
-<input type="button" value="没怀孕"/>
-<input type="button" value="没怀孕"/>
+<input type="button" value="我没点"/>
+<input type="button" value="我没点"/>
+<input type="button" value="我没点"/>
+<input type="button" value="我没点"/>
+<input type="button" value="我没点"/>
+<input type="button" value="我没点"/>
 <script>
     //获取所有的按钮,分别注册点击事件
     var btnObjs = document.getElementsByTagName("input");
@@ -20,10 +20,10 @@
         btnObjs[i].onclick = function () {
             //把所有的按钮的value值设置为默认的值:没怀孕
             for (var j = 0; j < btnObjs.length; j++) {
-                btnObjs[j].value = "没怀孕";
+                btnObjs[j].value = "我没点";
             }
             //当前被点击的按钮设置为:怀孕了
-            this.value = "怀孕了";
+            this.value = "我点了";
         };
 
     }

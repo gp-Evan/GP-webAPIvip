@@ -283,7 +283,7 @@ box.style.backgroundColor = 'red';
 
   通过样式属性设置宽高、位置的属性类型是字符串，需要加上px
 
-### 案例
+案例：
 
 - 点击按钮改变div的大小和颜色
 - 点击按钮设置div显示隐藏
@@ -291,3 +291,7 @@ box.style.backgroundColor = 'red';
 - 列表隔行变色
 - 鼠标经过高亮显示
 - 图片切换二维码案例
+
+作业：
+
+​	tab切换案例
