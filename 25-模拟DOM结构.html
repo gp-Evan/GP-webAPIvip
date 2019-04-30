@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>模拟DOM结构</title>
+</head>
+<body>
+<div id="box">hello world</div>
+<p id="p"></p>
+<!--注释-->
+<script>
+    // DOM ---》 文档对象模型
+    // HTML 网页 通过 对象的方式来描述
+    // DOM 是一个树形的结构   文档树
+
+    // 节点分类：
+    /**
+     * 1. 元素节点
+     * 2. 属性节点
+     * 3. 文本节点
+     * 4. 注释节点
+     */
+
+    // 页面上 div 对应的DOM元素都有哪些成员呢？
+    /*var box = document.getElementById('box');
+    console.dir(box);
+
+    var p = document.getElementById('p');
+    console.dir(p);*/
+
+    // 观察两个元素的成员是否一样
+    //  因为两个元素都是属于 DOM节点，都是同类对象
+
+    // 创建一系列 具有相同属性的对象？
+    // 使用构造函数
+    // 当需要传 非常多的属性，可以使用，而且某些属性不传，可以使用 对象
+    function Node(options) {
+        // this.id = options.id;
+        // this.className = options.className;
+        /*if (options.className) {
+            this.className = options.className;
+        } else {
+            this.className = '';
+        }*/
+        // this.className = options.className ? options.className : ''; 继续简化
+        this.className = options.className || '';
+        // || 运算，布尔类型运算， 如果两边有一边为 true，返回true,如果两边都为false，返回false
+        // 两边 是 其它类型：   首先 先转换成 成布尔类型
+        // 第一个运算数，转换结果为true，则返回第一个运算数的值
+        // 第一个运算数为 false，则返回第二个运算数的值
+
+        this.id = options.id || '';
+
+        // 还有一些属性，比如所 nodeName,nodeType,nodeValue
+        this.nodeName = options.nodeName || '';
+        // 默认定义好一个标识，  元素节点 1，属性节点2，文本节点3
+        this.nodeType = options.nodeType || 1;
+        // 记录节点的值，如果是元素节点 始终是null
+        // 如果是属性节点，则是 属性对应的值，如果是文本节点，则是文本内容
+        this.nodeValue = options.nodeValue || null;
+
+        // 层级关东西属性
+        this.children = options.children || [];
+    }
+
+    /*var o = new Node({
+        id: 'box'
+    });
+    console.dir(o);*/
+
+    // 以下，通过 构造函数来模拟创建节点的过程
+    // 创建html节点
+    var html = new Node({
+        nodeName: 'html'
+    });
+    var head = new Node({
+        nodeName: 'head'
+    });
+    html.children.push(head);
+
+    var body = new Node({
+        nodeName: 'body'
+    });
+    html.children.push(body);
+
+    // div 和 p
+    var div = new Node({
+        nodeName: 'div'
+    });
+    var p = new Node({
+        nodeName: 'p'
+    });
+    body.children.push(div);
+    body.children.push(p);
+    console.dir(html);
+    // 两者没有任何联系，层级关系
+
+
+    /**
+     * 一个树形结构 通过对象的形式描述出来了
+     * 我们的DOM其实也是通过类似的机制
+     * 只是，这种机制，不需要我们自己去创建对象，
+     * 它是在我们获取的时候，就封装好了。
+     *
+     * 在运行的时候，浏览器内部，维护了 一颗 DOM树
+     *
+     * 1. 深刻的理解DOM
+     * 2. 了解节点的相关属性  nodeName nodeType nodeValue
+     * 3. 了解 节点的层次结构  子元素 、父元素 、兄弟 元素
+     */
+</script>
+</body>
+</html>
