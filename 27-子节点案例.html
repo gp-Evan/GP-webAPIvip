@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>获取子节点案例</title>
+</head>
+<body>
+<ul id="uu">
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+    <li>06</li>
+    <li>07</li>
+    <li>08</li>
+    <li>09</li>
+    <li>10</li>
+</ul>
+<div>
+    <p></p>
+    <span></span>
+    <div></div>
+</div>
+<script src="js/common.js"></script>
+<script>
+    // 获取ul 再去找 所有的子元素
+    var uu = my$('uu');
+
+    // 以前获取
+    // uu.getElementsByTagName('li');
+
+    // uu.childNodes   所有的子节点
+    // uu.children    所有子元素   但是存在兼容性问题   MDN
+    // 1. 代码少些了
+    // 2. 如果 子节点 类型不同的时候，不适用 以前的方法
+
+    // 是否有子节点
+    if (uu.hasChildNodes()) {
+        for (var i = 0; i < uu.children.length; i++) {
+            var li = uu.children[i];
+            if (i % 2 === 0) {
+                // 奇数行  行号
+                li.style.backgroundColor = 'red';
+            } else {
+                li.style.backgroundColor = 'yellow';
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
