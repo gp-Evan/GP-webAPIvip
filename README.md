@@ -338,7 +338,14 @@ HTML之间有层次关系，所以对应的DOM树上的节点，也有层级关�
   - 只有一个   单数
 - childNodes  获取该元素所有的子节点
   - 有很多个  复数
+  - firstChild  第一个子节点
+  - lastChild  最后一个子节点
 - hasChildNodes()   判断是否有子元素
-- children  获取该元素所有的 子元素（只包含元素节点，更方便）
+- children  获取该元素所有的 子元素（只包含元素节点，更方便）  
+  - firstElementChild   第一个子元素   
+  - lastElementChild   最后一个子元素
+  - 上两个属性，从IE9 开始支持
+
+案例：隔行变色
 
 #### 兄弟节点

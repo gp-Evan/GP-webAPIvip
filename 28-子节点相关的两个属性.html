@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>子节点相关的两个属性</title>
+</head>
+<body>
+<div id="box">
+    <div>这是一张广告图片</div>
+    <ul>
+        <li>这是一个列表</li>
+    </ul>
+    <p>说明性文字</p>
+</div>
+<a href="javascript:0">aaa</a>
+<script src="js/common.js"></script>
+<script>
+    //  如何来找到  第一个 div  和 最后一个 p标签
+    //  1. 设置id
+    //  2. box.children[0]   box.children[box.children.length-1]
+
+    // 直接获取 第一个 节点和 最后一个节点的属性
+    var box = my$('box');
+    console.log(box.firstChild);
+    console.log(box.lastChild);
+
+    // 关于元素的这两个属性
+    // 这两个属性 IE9 才开始支持
+    console.log(box.firstElementChild);
+    console.log(box.lastElementChild);
+
+
+    // 可以放到 common.js中
+    function getFirstElement(ele) {
+        var node, nodes = ele.childNodes, i = 0;
+        while (node = nodes[i++]) {
+            if (node.nodeType === 1) {
+                return node;
+            }
+        }
+        return null;
+    }
+
+    console.log(getFirstElement(box));
+</script>
+</body>
+</html>
