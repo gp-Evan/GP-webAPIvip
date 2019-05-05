@@ -36,3 +36,31 @@ function getLastElement(ele) {
     }
     return null;
 }
+
+/**
+ * 获取该元素下一个兄弟元素
+ * @param el
+ * @returns {*}
+ */
+function getNextElementSibling(el) {
+    while (el = el.nextSibling) {
+        if (el.nodeType === 1) {
+            return el;
+        }
+    }
+    return null;
+}
+
+/**
+ * 获取该元素上一个兄弟元素
+ * @param el
+ * @returns {*}
+ */
+function getPreviousElementSibling(el) {
+    while (el = el.previousSibling) {
+        if (el.nodeType === 1) {
+            return el;
+        }
+    }
+    return null;
+}

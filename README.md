@@ -346,9 +346,83 @@ HTML之间有层次关系，所以对应的DOM树上的节点，也有层级关�
   - lastElementChild   最后一个子元素
   - 上两个属性，从IE9 开始支持 
 
+兼容处理：
+
+```javascript
+/**
+ * 获取元素的第一个子元素
+ * @param ele
+ * @returns {*}
+ */
+function getFirstElement(ele) {
+    var node, nodes = ele.childNodes, i = 0;
+    while (node = nodes[i++]) {
+        if (node.nodeType === 1) {
+            return node;
+        }
+    }
+    return null;
+}
+
+/**
+ * 获取 元素的最后一个子元素
+ * @param ele
+ * @returns {*}
+ */
+function getLastElement(ele) {
+    var node, nodes = ele.childNodes, i = nodes.length - 1;
+    while (node = nodes[i--]) {
+        if (node.nodeType === 1) {
+            return node;
+        }
+    }
+    return null;
+}
+```
+
+
+
 > 案例：
 >
 > 1. 隔行变色
 > 2. 模拟菜单
 
 #### 兄弟节点
+
+- nextSibling  下一个兄弟节点
+- previousSibling    上一个兄弟节点
+- nextElementSibling    下一个兄弟元素
+- previousSibling    上一个兄弟元素
+
+兼容处理：
+
+```javascript
+/**
+ * 获取该元素下一个兄弟元素
+ * @param el
+ * @returns {*}
+ */
+function getNextElementSibling(el) {
+    while (el = el.nextSibling) {
+        if (el.nodeType === 1) {
+            return el;
+        }
+    }
+    return null;
+}
+
+/**
+ * 获取该元素上一个兄弟元素
+ * @param el
+ * @returns {*}
+ */
+function getPreviousElementSibling(el) {
+    while (el = el.previousSibling) {
+        if (el.nodeType === 1) {
+            return el;
+        }
+    }
+    return null;
+}
+```
+
