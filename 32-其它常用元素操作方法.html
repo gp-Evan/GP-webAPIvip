@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>其它常用元素操作方法</title>
+</head>
+<body>
+<ul id="uu">
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+</ul>
+
+<ul id="ul">
+    <li>第一项</li>
+</ul>
+<input type="button" value="按钮" id="btn"/>
+<script src="js/common.js"></script>
+<script>
+    // createElement
+    // appendChild
+    // removeChild
+
+    // insertBefore   // 插入到指定位置
+    // replaceChild   // 替换元素
+
+    my$('btn').onclick = function () {
+        var li = document.createElement('li');
+        setInnerText(li, 'abc');
+
+        /* // 插入到第一个元素之前
+         my$('uu').insertBefore(li, getFirstElement(my$('uu')));*/
+
+
+        // replaceChild
+        // my$('uu').replaceChild(li, my$('uu').children[0]);
+
+
+        // appendChild 的另一种用法
+        // 把第一个ul中的第一个标签  移动到第二个 ul
+        /*var li = getFirstElement(my$('uu'));
+        my$('ul').appendChild(li);*/
+        // 查文档
+
+        // 保留节点
+        var li = getFirstElement(my$('uu')).cloneNode(true);
+        console.log(li)
+        my$('ul').appendChild(li);
+    };
+
+
+</script>
+</body>
+</html>

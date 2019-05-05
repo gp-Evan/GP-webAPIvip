@@ -463,3 +463,10 @@ function getPreviousElementSibling(el) {
 
 - 找到父级元素
 - removeChild(子元素)
+
+### 其它元素操作方法
+
+- insertBefore   插入到指定位置
+- replaceChild   替换节点
+- cloneNode()   复制节点
+
