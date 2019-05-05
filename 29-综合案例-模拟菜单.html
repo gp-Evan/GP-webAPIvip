@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>模拟菜单</title>
+    <style>
+        .menu ul {
+            list-style-type: none;
+            overflow: hidden;
+        }
+
+        .menu ul li {
+            float: left;
+            margin: 0 5px;
+            background-color: #ccc;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            display: block;
+            padding: 0 20px;
+            line-height: 40px;
+        }
+
+        .menu ul li.current {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+<div id="menu" class="menu">
+    <ul>
+        <li class="current"><a href="javascript:void(0)">01</a></li>
+        <li><a href="javascript:void(0)">02</a></li>
+        <li><a href="javascript:void(0)">03</a></li>
+        <li><a href="javascript:void(0)">04</a></li>
+        <li><a href="javascript:void(0)">05</a></li>
+    </ul>
+</div>
+<a href="http://www.gupaoedu.com">跳转</a>
+<a href="javascript:alert('123')">跳转</a>
+<a href="javascript:'123';">跳转</a>
+
+<script src="js/common.js"></script>
+<script>
+    //  a标签  好控制样式 button 的样式不好控制
+    // 但是，a标签 又有默认跳转行为
+    // href  跳转  是指是把  浏览器地址栏换成 href 里边的值
+    //  http 协议 跳转
+    //  javascript 也可以看成协议   伪协议
+    // 甚至 浏览器的地址栏 ，也是可以执行 JavaScript的
+    // void(0)   什么都不干
+    // void 是一个运算符   执行后边的表达式  并返回 undefined  所以，不管怎么样，都会返回undefined
+    // undefined 布尔运算 转换成 false
+    // 只要了解就行
+
+
+    // 完成案例
+    var menu = my$('menu');
+    var ul = getFirstElement(menu);
+
+    for (var i = 0; i < ul.children.length; i++) {
+        var li = ul.children[i];
+        // 要找a标签
+        var link = getFirstElement(li);
+
+        // 给a标签注册 点击事件
+        // link.onclick=function(){};
+        // 考虑到性能，因为处理函数都是一样的，所以写一次就行了
+        link.onclick = linkclick; // 注意这里一定不能写 ()
+    }
+
+    function linkclick() {
+        for (var i = 0; i < ul.children.length; i++) {
+            // 排他功能
+            ul.children[i].removeAttribute('class');
+
+            // 当前高亮
+            this.parentNode.className = 'current';
+
+            // 最后  阻止  a 标签默认行为
+        }
+        return false;
+    }
+</script>
+</body>
+</html>
