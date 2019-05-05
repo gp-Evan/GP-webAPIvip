@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>节点层次</title>
+</head>
+<body>
+<div id="box">
+    <span>span</span>
+    <p>p标签</p>
+    <!--注释-->
+</div>
+<script src="js/common.js"></script>
+<script>
+    // 回顾 DOM树
+    // 1. 文档中所有内容都是节点
+    // 2. 跟这些节点相关的属性
+    // 2.1 NodeType 节点类型
+    // 2.1.1 1元素节点
+    // 2.1.2 2属性节点
+    // 2.1.3 3文本节点
+    // 2.2 NodeName  节点名称
+    // 2.3 NodeValue  节点值   元素节点的value值始终是null
+
+
+    // 节点的层次结构：
+    // HTML 包含两个子节点
+    // 子节点的 父节点是HTML
+    // 两个子节点之间的关系 是兄弟节点
+
+
+    /**
+     * 父子结构：
+     * parentNode   单数
+     * childNodes   复数
+     */
+
+    var box = my$('box');
+    console.log(box.childNodes); //7个
+    // 回顾  元素节点 属性节点 文本节点
+    // 注意： 换行 及 缩进 等 都属于 文本节点
+    // 只记常用的节点类型
+    // 找所有的子元素
+    /*var elements = [];
+    for (var i = 0; i < box.childNodes.length; i++) {
+        if (box.childNodes[i].nodeType === 1) {
+            elements.push(box.childNodes[i]);
+        }
+    }
+    console.log(elements);
+
+    // 父节点
+    console.log(box.parentNode);*/
+
+    // 自动获取子元素的 属性
+    console.dir(box); // children  只获取所有的子元素
+    console.log(box.children);   // 所以 children 比较方便
+</script>
+</body>
+</html>
