@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>动态创建元素</title>
+</head>
+<body>
+<h1>标题</h1>
+<input type="button" value="动态创建" id="btn"/>
+<div id="box"></div>
+<script src="js/common.js"></script>
+<script>
+    // 动态创建元素的三种方法
+    // document.write()
+    // element.innerHTML
+    // document.createElement()
+
+    //document.write('哈哈哈');
+    /*my$('btn').onclick=function(){
+        document.write('嘿嘿');
+    };*/
+    // 一般用于 页面弹出框  接口等等
+
+
+    // element.innerHTML 动态创建元素 非常简单，之前使用过
+    // 指定标签 添加内容
+
+    // 点击按钮 动态生成列表
+    var datas = [1, 2, 3, 3, 4, 5, 6, 7, 8, 9];
+    /*my$('btn').onclick = function () {
+        var box = my$('box');
+        box.innerHTML = '<ul>';
+        for (var i = 0; i < datas.length; i++) {
+            var li = '<li>' + datas[i] + '</li>';
+            box.innerHTML += li;
+        }
+
+        box.innerHTML += '</ul>';
+    };*/
+    // innerHTML 每一次 都会触发 页面重绘
+    // 优化思路： 保存到字符串中，最后  循环结束后，再 一次绘制
+    /*my$('btn').onclick = function () {
+        var box = my$('box');
+        var html = '<ul>';
+        for (var i = 0; i < datas.length; i++) {
+            var li = '<li>' + datas[i] + '</li>';
+            html += li;
+        }
+
+        html += '</ul>';
+        box.innerHTML = html;
+    };*/
+    //  但是 字符串的不可变性，每一次 拼接的时候，都需要 重新开辟内存
+    // 所以也有性能问题
+    // 优化思路，使用数组代替字符串的拼接
+    /*my$('btn').onclick = function () {
+        var box = my$('box');
+        var array = [];
+        array.push('<ul>');
+        for (var i = 0; i < datas.length; i++) {
+            var li = '<li>' + datas[i] + '</li>';
+            array.push(li);
+        }
+
+        array.push('</ul>');
+        box.innerHTML = array.join('');
+
+        // 点击按钮 动态生成列表，鼠标放到列表项 高亮
+        // 当  innerHTML 绘制完毕后，才能 获取元素 注册事件
+    };*/
+
+    // 使用 最佳动态创建元素的方案
+
+    // 在内容中创建一个DOM元素
+    /* var p = document.createElement('p');
+     // 可以随时设置 DOM对象的属性
+     p.innerText = 'hello';
+     p.style.color = 'red';
+     // console.dir(p);
+     my$('box').appendChild(p);  // 把p元素 追加到 box子元素的最后*/
+    my$('btn').onclick = function () {
+        // 动态创建 ul,只是在内存中创建对象
+        var ul = document.createElement('ul');
+        // 把ul放到页面上， 也就是把ul放到DOM上，会触发重绘
+        my$('box').appendChild(ul);
+        for (var i = 0; i < datas.length; i++) {
+            var li = document.createElement('li');
+            // li.innerText = datas[i];  //  innerText 有兼容性问题
+            setInnerText(li, datas[i]);
+            // li.onclick=function(){};
+            li.onmouseover = liMouseover;
+            li.onmouseout = liMouseout;
+            ul.appendChild(li);
+
+        }
+
+    };
+
+
+    // 处理设置innerText  也可以放到 common.js中
+    // 包裹上次 获取 innerText的
+    function setInnerText(el, content) {
+        if (el.innerText) {
+            el.innerText = content;
+        } else {
+            el.textContent = content;
+        }
+    }
+
+    // li鼠标经过时间处理函数
+    function liMouseover() {
+        this.style.backgroundColor = 'orange';
+    }
+
+    function liMouseout() {
+        this.style.backgroundColor = '';
+    }
+
+</script>
+
+</body>
+</html>

@@ -64,3 +64,25 @@ function getPreviousElementSibling(el) {
     }
     return null;
 }
+
+/**
+ * 获取元素里边的文本
+ * @param ele
+ * @returns {*}
+ */
+function getInnerText(ele) {
+    return ele.innerText ? ele.innerText : ele.textContent;
+}
+
+/**
+ * 设置元素中的文本
+ * @param el
+ * @param content
+ */
+function setInnerText(el, content) {
+    if (el.innerText) {
+        el.innerText = content;
+    } else {
+        el.textContent = content;
+    }
+}

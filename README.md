@@ -426,3 +426,40 @@ function getPreviousElementSibling(el) {
 }
 ```
 
+### 元素创建
+
+有时候，需要在页面上动态创建元素。
+
+> 为什么要动态创建元素？
+>
+> 数据是通过服务器请求来的，在首次加载的时候，不需要 显示。
+
+动态创建元素的三种方式：
+
+- document.write()
+- element.innerHTML
+- document.createElement()
+
+> document.write  
+>
+> 1. 在首次渲染的时候，遵循从上到下依次渲染
+> 2. 放在事件处理函数中，会把页面原先的内容覆盖掉
+>
+> innerHTML
+>
+> 1. 每次执行都会重绘该元素下所有内容
+> 2. 字符串拼接性能
+> 3. 如果要注册事件就要重新获取元素
+>
+> document.createElement
+>
+> DOM操作的正统方法
+
+案例： 动态创建列表，并且鼠标经过 高亮显示
+
+作业： 动态创建表格
+
+### 删除元素
+
+- 找到父级元素
+- removeChild(子元素)
