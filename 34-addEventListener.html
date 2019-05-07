@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>addEventListener</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<!--<script src="js/user1.js"></script>-->
+<!--<script src="js/user2.js"></script>-->
+<!--只执行user2里边的代码 ，为什么？-->
+<script>
+    // 之前注册事件的方法
+    /*var btn = document.getElementById('btn');
+    btn.onclick = function () {
+        console.log('hello');
+    };*/
+
+    // 发现 user2把 user1里边的事件覆盖了
+    var btn = document.getElementById('btn');
+    btn.addEventListener('click', function () {
+        console.log('user1-hello');
+    });
+    btn.addEventListener('click',function(){
+        console.log('user2-咕泡');
+    });
+
+
+    /**
+     * on 方式：无法 给同一个对象的同一类型的事件注册多个事件处理函数
+     *
+     * addEventListener：可以解决 为同一个对象同一类型时间注册多个事件处理函数
+     * 但是，它存在 兼容性
+     */
+</script>
+</body>
+</html>
