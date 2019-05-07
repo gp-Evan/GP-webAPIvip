@@ -469,4 +469,3 @@ function getPreviousElementSibling(el) {
 - insertBefore   插入到指定位置
 - replaceChild   替换节点
 - cloneNode()   复制节点
-

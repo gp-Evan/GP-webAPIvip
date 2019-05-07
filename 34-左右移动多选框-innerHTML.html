@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>左右移动多选框</title>
+    <style>
+        select {
+            width: 300px;
+            height: 200px;
+            background-color: #eee;
+            font-size: 20px;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+<body>
+<select id="se" multiple>
+    <option>苹果</option>
+    <option>橘子</option>
+    <option>香蕉</option>
+    <option>梨</option>
+    <option>西瓜</option>
+    <option>菠萝</option>
+    <option>桃子</option>
+</select>
+<input type="button" value="<<" id="btn1"/>
+<input type="button" value="<" id="btn2"/>
+<input type="button" value=">" id="btn3"/>
+<input type="button" value=">>" id="btn4"/>
+<select id="se2" multiple></select>
+<script src="js/common.js"></script>
+<script>
+    var se = my$('se');
+    var se2 = my$('se2');
+    se.children[0].onclick = function () {
+        console.log('bb');
+    };
+    my$('btn4').onclick = function () {
+        // 通过 innerHTML方式
+        se2.innerHTML = se.innerHTML;   // 发现是复制了一份
+        se.innerHTML = '';  // 清空原来的
+
+
+        // 问题注册事件问题
+        // 使用innerHTML 移动元素的时候，  移动之后，事件丢失
+        // 使用innerHTML 清空子元素，会发生内存泄漏【该释放的内存并没有释放】
+
+    };
+</script>
+</body>
+</html>

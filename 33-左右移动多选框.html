@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>左右移动多选框</title>
+    <style>
+        select {
+            width: 300px;
+            height: 200px;
+            background-color: #eee;
+            font-size: 20px;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+<body>
+<select id="se" multiple>
+    <option>苹果</option>
+    <option>橘子</option>
+    <option>香蕉</option>
+    <option>梨</option>
+    <option>西瓜</option>
+    <option>菠萝</option>
+    <option>桃子</option>
+</select>
+<input type="button" value="<<" id="btn1"/>
+<input type="button" value="<" id="btn2"/>
+<input type="button" value=">" id="btn3"/>
+<input type="button" value=">>" id="btn4"/>
+<select id="se2" multiple></select>
+<script src="js/common.js"></script>
+<script>
+    var se = my$('se');
+    var se2 = my$('se2');
+    se.children[0].onclick = function () {
+        console.log('aa');
+    };
+    // 1. 全部移动
+    my$('btn4').onclick = function () {
+        var len = se.children.length;
+        for (var i = 0; i < len; i++) {
+            se2.appendChild(se.children[0]);
+        }
+    };
+    my$('btn1').onclick = function () {
+        var len = se2.children.length;
+        for (var i = 0; i < len; i++) {
+            se.appendChild(se2.children[0]);
+        }
+    };
+    my$('btn3').onclick = function () {
+        var arr = []; // 存储选中的option
+        for (var i = 0; i < se.children.length; i++) {
+            if (se.children[i].selected) {
+                arr.push(se.children[i]);
+                se.children[i].selected = false;
+            }
+        }
+        for (var i = 0; i < arr.length; i++) {
+            se2.appendChild(arr[i]);
+        }
+    };
+    my$('btn2').onclick = function () {
+        var arr = []; // 存储选中的option
+        for (var i = 0; i < se2.children.length; i++) {
+            if (se2.children[i].selected) {
+                arr.push(se2.children[i]);
+                se2.children[i].selected = false;
+            }
+        }
+        for (var i = 0; i < arr.length; i++) {
+            se.appendChild(arr[i]);
+        }
+    };
+</script>
+</body>
+</html>
