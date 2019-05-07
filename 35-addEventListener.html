@@ -30,8 +30,18 @@
      * on 方式：无法 给同一个对象的同一类型的事件注册多个事件处理函数
      *
      * addEventListener：可以解决 为同一个对象同一类型时间注册多个事件处理函数
-     * 但是，它存在 兼容性
+     * 但是，它存在 兼容性  IE9 以下 只 支持  attachEvent
+     * 查看文档发现 区别有点小   他是非标准
      */
+
+    /*btn.attachEvent('onclick',function(){
+        console.log('user3-gupao');
+    });*/
+
+
+    //  作业：  自行处理  addEventListener 兼容
+
+
 </script>
 </body>
 </html>
