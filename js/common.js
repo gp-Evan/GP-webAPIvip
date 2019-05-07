@@ -86,3 +86,35 @@ function setInnerText(el, content) {
         el.textContent = content;
     }
 }
+
+/**
+ * 添加事件监听
+ * @param el
+ * @param eventName
+ * @param fn
+ */
+function addEventListener(el, eventName, fn) {
+    if (el.addEventListener) {
+        el.addEventListener(eventName, fn);
+    } else if (el.attachEvent) {
+        el.attachEvent('on' + eventName, fn);
+    } else {
+        el['on' + eventName] = fn;
+    }
+}
+
+/**
+ * 解除事件监听
+ * @param el
+ * @param eventName
+ * @param fn
+ */
+function removeEventListener(el, eventName, fn) {
+    if (el.removeEventListener) {
+        el.removeEventListener(eventName, fn);
+    } else if (el.detachEvent) {
+        el.detachEvent('on' + eventName, fn);
+    } else {
+        el['on' + eventName] = null;
+    }
+}

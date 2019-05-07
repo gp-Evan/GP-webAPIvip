@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>事件执行的三个阶段</title>
+    <style>
+        #box1 {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <div id="box2">
+        <div id="box3"></div>
+    </div>
+</div>
+<script src="js/common.js"></script>
+<script>
+    // addEventListener第三个参数的作用
+    var box1 = my$('box1');
+    var box2 = my$('box2');
+    var box3 = my$('box3');
+    var arr = [box1, box2, box3];
+    /*for (var i = 0; i < arr.length; i++) {
+        arr[i].addEventListener('click', function () {
+            console.log(this.id); // 出现事件冒泡
+        });
+    }
+
+    document.body.addEventListener('click', function () {
+        console.log('body'); // 时间捕获
+    },true);*/
+
+    // 第三个参数  为 false的时候  事件冒泡模式； 为true的时候，事件捕获模式
+
+
+    /**
+     * 事件执行的三个阶段：
+     * 1. 事件捕获阶段
+     * 2. 执行当前点击的元素
+     * 3. 事件冒泡
+     *
+     * 没一次事件执行，都会经历3个阶段，
+     * 在处理的时候我们只能干预  捕获 或者 冒泡 任一阶段
+     */
+
+
+    // 其它注册事件的方法，如果来干预捕获阶段？
+    // btn.onclick   btn.attachEvent
+    // 这两种方法 无法 去设置 冒泡或者捕获，所以一般情况下是 冒泡模式
+    for(var i = 0;i<arr.length;i++){
+        arr[i].onclick =function(){
+          console.log(this.id);
+        };
+    }
+    document.body.onclick=function(){
+        console.log(this.nodeName);
+    };
+    document.onclick=function(){
+        // document的范围比body更大
+        console.log(this.nodeName);
+    };
+</script>
+</body>
+</html>
