@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>事件参数对象</title>
+    <style>
+        #box1 {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<div id="box1">
+    <div id="box2">
+        <div id="box3"></div>
+    </div>
+</div>
+<script src="js/common.js"></script>
+<script>
+    // 事件参数对象 event
+    // 通过这个对象，我们可以获取事件发生时 与 事件相关的一些数据
+    // 也就是这个事件参数对象的一些属性
+
+    my$('btn').onclick = function (e) {
+        // DOM标准中，在调用事件处理函数的时候，传入了一个参数
+        // 在老版本的IE中，事件参数对象 存储在 window对象下的event属性中
+        // 事件参数对象有兼容处理问题
+        // 让 e始终为事件参数对象
+        var e = e || window.event;
+
+        //console.log(e);
+
+        //  获取 事件执行过程的阶段
+        console.log(e.eventPhase);  // 2 目标阶段，既没有事件捕获也没有事件冒泡
+
+        // 获取事件源  触发时间的真实目标
+        console.log(e.target);
+        console.log(e.currentTarget);
+        // 如果没有 事件冒泡，那么这两者是一样的
+        // 如果有事件冒泡，指的是注册事件的那个对象，也就是事件处理函数中的this
+
+
+        // e.target 有兼容性问题
+        // 老版本ie中  叫  e.srcElement
+    };
+
+    var box1 = my$('box1');
+    var box2 = my$('box2');
+    var box3 = my$('box3');
+    var arr = [box1, box2, box3];
+    for (var i = 0; i < arr.length; i++) {
+        arr[i].addEventListener('click', function (e) {
+            var e = e || window.event;
+            console.log(e.eventPhase);
+            var target = e.target || e.srcElement;
+            console.log(e.target);
+            console.log(e.currentTarget);// 与this一样
+        });
+    }
+</script>
+</body>
+</html>
