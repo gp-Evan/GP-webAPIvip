@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>解除事件</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<script src="js/common.js"></script>
+<script>
+    my$('btn').onclick = function fn() {
+        console.log('hello');
+        // 实现点击一次之后，就 不再执行
+        // 事件处理函数最后解除事件
+        this.onclick = null;
+    };
+
+    /*my$('btn').addEventListener('click', function fn() {
+        console.log('hello 咕泡');
+
+        // 解除事件
+        // 想要 解除事件的时候，不能使用 匿名函数
+        this.removeEventListener('click', fn);
+    });*/
+
+    // 同样 removeEventListener 也有兼容性为问题  dettachEvent
+
+
+</script>
+</body>
+</html>
