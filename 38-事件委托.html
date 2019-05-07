@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>事件委托</title>
+</head>
+<body>
+<ul id="uu">
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+</ul>
+<script src="js/common.js"></script>
+<script>
+    // 因为事件冒泡的原因，点击子元素的时候，会传递到父级元素
+    // 所以注册事件的时候，没必要 每个子元素都去注册事件，直接给父级元素注册事件就ok
+    // 这种方法就叫  事件委托
+
+    /**
+     *  收快递：
+     *  班上所有的同学 都要收快递，比起给每个人送快递，不如委托 班主任 直接签收
+     */
+    my$('uu').onclick = function (e) {
+        //console.log(this);// 事件源  点击 子元素的时候，也会触发该事件
+        // 那么 如何 去获取  当前点击的 子元素呢？
+
+        //  事件处理函数  默认 传递了一个参数进来
+        // event参数 对象  ，一般叫 e
+        //console.log(e.target); // 当前真正点击的子元素
+        e.target.style.backgroundColor = 'red';
+
+        // 可以自己做排他功能
+    };
+</script>
+</body>
+</html>
