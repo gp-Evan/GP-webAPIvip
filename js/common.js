@@ -125,8 +125,8 @@ function removeEventListener(el, eventName, fn) {
  */
 function getScroll() {
     return {
-        scrollLeft: document.documentElement.scrollLeft || document.body.scrollLeft,
-        scrollTop: document.documentElement.scrollTop || document.body.scrollTop
+        left: document.documentElement.scrollLeft || document.body.scrollLeft,
+        top: document.documentElement.scrollTop || document.body.scrollTop
     }
 }
 
@@ -137,8 +137,8 @@ function getScroll() {
  */
 function getPage(e) {
     return {
-        pageX: e.pageX || e.clientX + getScroll().scrollLeft,
-        pageY: e.pageY || e.clientY + getScroll().scrollTop
+        x: e.pageX || e.clientX + getScroll().scrollLeft,
+        y: e.pageY || e.clientY + getScroll().scrollTop
     }
 
 }

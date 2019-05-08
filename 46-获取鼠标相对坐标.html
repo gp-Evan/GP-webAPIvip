@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>获取鼠标相对坐标</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="js/common.js"></script>
+<script>
+    // 鼠标相对于box的坐标
+    // 我们知道 鼠标相对于页面左上角的坐标
+    // 求出 盒子相对于页面左上角的坐标
+    // 求差 就能求出 鼠标相对于盒子的坐标了
+
+    // 如何获取盒子的坐标
+    // 盒子相对于页面左上角的偏移量
+    var box = document.getElementById('box');
+    box.onclick = function (e) {
+        /*console.log(this.offsetLeft);
+        console.log(this.offsetTop);*/
+
+        e = e || window.event;
+
+
+        var x = getPage(e).x - this.offsetLeft;
+        var y = getPage(e).y - this.offsetTop;
+        console.log(x, y);
+    };
+</script>
+</body>
+</html>
