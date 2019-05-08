@@ -41,7 +41,7 @@
         // 在老版本的IE中，事件参数对象 存储在 window对象下的event属性中
         // 事件参数对象有兼容处理问题
         // 让 e始终为事件参数对象
-        var e = e || window.event;
+        e = e || window.event;
 
         //console.log(e);
 
@@ -65,10 +65,10 @@
     var arr = [box1, box2, box3];
     for (var i = 0; i < arr.length; i++) {
         arr[i].addEventListener('click', function (e) {
-            var e = e || window.event;
+            e = e || window.event;
             console.log(e.eventPhase);
             var target = e.target || e.srcElement;
-            console.log(e.target);
+            console.log(target);
             console.log(e.currentTarget);// 与this一样
         });
     }

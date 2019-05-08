@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>事件参数对象的其它成员</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            margin: 100px auto;
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.getElementById('box');
+    /*box.onclick=function(e){
+        var e = e || window.event;
+        // e.type 获取事件名称
+        // 在onclick中没有意义，因为 本身就是click
+    };*/
+
+    // 让一个元素的不同事件 指向同一个事件处理函数，通过e.type进行不同的处理
+    box.onclick = fn;
+    box.onmouseover = fn;
+    box.onmouseout = fn;
+
+    function fn(e) {
+        e = e || window.event;
+
+        switch(e.type){
+            case 'click':
+                console.log('点击');
+                break;
+            case 'mouseover':
+                console.log('经过');
+                break;
+            case 'mouseout':
+                console.log('离开');
+                break;
+        }
+    }
+
+    // 为多个事件注册一个函数，节省内存开辟。
+
+</script>
+</body>
+</html>

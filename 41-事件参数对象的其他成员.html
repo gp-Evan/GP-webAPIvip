@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>事件参数对象的其他成员</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 1000px;
+        }
+
+        #box {
+            margin-top: 500px;
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // 获取事件发生时鼠标坐标
+    var box = document.getElementById('box');
+
+    box.onclick = function (e) {
+        e = e || window.event;
+
+        console.log(e.clientX, e.clientY);  // 返回 鼠标当前点击位置的坐标
+        // 相对于左上角【浏览器可视区域】
+        // 让页面出现滚动条  发现 ，永远是相对于 浏览器可视区域发生变化
+        // 相当于 fixed 固定定位
+
+        // 有时候想要知道该元素 位于整个文档中的 什么位置，
+        // 包含滚动出去的位置：
+        // 相当于绝对定位
+        console.log(e.pageX, e.pageY);// 不管有没有滚动条 都不会变
+    }
+</script>
+</body>
+</html>
