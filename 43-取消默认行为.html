@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>取消默认行为</title>
+</head>
+<body>
+<a href="http://www.gupaoedu.com" id="link">跳转</a>
+<script>
+    var link = document.getElementById('link');
+    link.onclick = function (e) {
+        alert('aaa');
+
+        // 取消默认跳转
+        // return false;
+
+        // 事件参数对象也提供了一个方法
+        e = e || window.event;
+
+        // DOM 标准方法   老版本IE不支持
+        e.preventDefault();
+
+
+        e.returnValue = false;
+
+        // 这两种方法了解就行   chrome两者都支持
+
+    };
+</script>
+</body>
+</html>
