@@ -118,3 +118,27 @@ function removeEventListener(el, eventName, fn) {
         el['on' + eventName] = null;
     }
 }
+
+/**
+ * 获取浏览器 滚动出去的距离
+ * @returns {{scrollLeft: number, scrollTop: number}}
+ */
+function getScroll() {
+    return {
+        scrollLeft: document.documentElement.scrollLeft || document.body.scrollLeft,
+        scrollTop: document.documentElement.scrollTop || document.body.scrollTop
+    }
+}
+
+/**
+ * 获取浏览器距离页面左上角的距离
+ * @param e
+ * @returns {{pageX: *, pageY: *}}
+ */
+function getPage(e) {
+    return {
+        pageX: e.pageX || e.clientX + getScroll().scrollLeft,
+        pageY: e.pageY || e.clientY + getScroll().scrollTop
+    }
+
+}

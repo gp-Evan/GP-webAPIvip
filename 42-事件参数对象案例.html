@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>图片跟着鼠标飞</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        #im {
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+<img src="./images/tianshi.gif" alt="" id="im"/>
+<!--90 * 80-->
+<script src="js/common.js"></script>
+<script>
+    // 让图片跟着鼠标飞
+    // 注册事件  鼠标移动事件
+    // 那么 事件源是谁呢？
+    // 注意 是鼠标在整个文档移动的时候
+    /*var im = document.getElementById('im');
+    document.onmousemove = function (e) {
+        e = e || window.event;
+
+        im.style.left = e.clientX - 45 + 'px';
+        im.style.top = e.clientY - 40 + 'px';
+    };*/
+
+    /**
+     *  clientX 和  clientY 没有兼容性问题
+     *
+     *  pageX 和 pageY  存在兼容性问题   从 IE9 才开始支持
+     *
+     *
+     *  兼容处理思路：
+     *      pageY  =  clientY +  页面滚动出去的距离
+     */
+
+    // 给文档注册一个点击事件，点击一次获取 页面滚动出去的距离
+    document.onclick = function (e) {
+        /*console.log(document.documentElement.scrollLeft);
+        console.log(document.documentElement.scrollTop);
+
+        console.log(document.body.scrollLeft);
+        console.log(document.body.scrollTop);*/
+
+        /*console.log(getScroll().scrollLeft);
+        console.log(getScroll().scrollTop);*/
+
+        e = e || window.event;
+
+
+        console.log(getPage(e).pageX);
+        console.log(getPage(e).pageY);
+
+    };
+
+    /**
+     * 获取浏览器 滚动出去的距离
+     * @returns {{scrollLeft: number, scrollTop: number}}
+     */
+    function getScroll() {
+        return {
+            scrollLeft: document.documentElement.scrollLeft || document.body.scrollLeft,
+            scrollTop: document.documentElement.scrollTop || document.body.scrollTop
+        }
+    }
+
+    /**
+     * 获取浏览器距离页面左上角的距离
+     * @param e
+     * @returns {{pageX: *, pageY: *}}
+     */
+    function getPage(e) {
+        return {
+            pageX: e.pageX || e.clientX + getScroll().scrollLeft,
+            pageY: e.pageY || e.clientY + getScroll().scrollTop
+        }
+
+    }
+</script>
+</body>
+</html>
