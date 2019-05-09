@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>offset属性</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            margin: 50px;
+            overflow: hidden; /* 防止外边距塌陷 */
+            /*position: relative;*/
+        }
+
+        #child {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 50px;
+            border: 10px solid yellow;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="child"></div>
+</div>
+<script>
+    // 三组与位置大小相关的属性
+    // offset client scroll
+
+    // offset  获取元素的位置和大小
+
+    // 获取父元素位置
+    var box = document.getElementById('box');
+    // 获取 box的坐标
+    console.log(box.offsetLeft, box.offsetTop);
+    // 获取 box 的大小
+    console.log(box.offsetWidth, box.offsetHeight);
+
+    // 获取子元素位置大小
+    var child = document.getElementById('child');
+    // 获取child的坐标
+    console.log(child.offsetLeft, child.offsetTop);  // 100,100
+    // offset 是距离最近的定位父元素距离
+
+    // child的大小
+    console.log(child.offsetWidth, child.offsetHeight); // 100 * 100  还有 20的 padding 和 20的border
+    // offset大小包含 padding 和 border  不包含 margin
+
+    // offsetParent
+    // 距离当前元素最近的定位父元素，
+    // 如果没有定位父元素，则一直到body
+    console.log(box.offsetParent);
+    console.log(child.offsetParent);
+
+
+</script>
+</body>
+</html>

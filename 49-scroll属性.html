@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>scroll属性</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            border: 30px solid red;
+            padding: 10px;
+            background-color: yellow;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    中新网5月9日电 据国家统计局网站消息，2019年4月份，全国居民消费价格同比上涨2.5%。其中，城市上涨2.5%，农村上涨2.6%；食品价格上涨6.1%，非食品价格上涨1.7%；消费品价格上涨2.9%，服务价格上涨2.0%。
+    4月份，全国居民消费价格环比上涨0.1%。其中，城市和农村均上涨0.1%；食品价格下降0.1%，非食品价格上涨0.1%；消费品价格与上月持平，服务价格上涨0.2%。
+</div>
+<script>
+    // scroll 属性，与滚动相关
+    var box = document.getElementById('box');
+    // 元素滚动出去的距离
+    console.log(box.scrollLeft, box.scrollTop);
+
+    console.log(box.scrollWidth, box.scrollHeight); // 内容的真实宽高  不包括 滚动条
+</script>
+</body>
+</html>

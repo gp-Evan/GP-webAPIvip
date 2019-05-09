@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>client属性</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            border: 10px solid red;
+            padding: 10px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // client 属性
+    var box = document.getElementById('box');
+
+    // 位置   其实是边框的宽度
+    console.log(box.clientLeft, box.clientTop);
+    // 大小  包含 内容大小 + padding  不包括边框
+    console.log(box.clientWidth, box.clientHeight);
+</script>
+</body>
+</html>
