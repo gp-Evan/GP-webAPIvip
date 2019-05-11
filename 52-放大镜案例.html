@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>放大镜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 291px;
+            margin: 100px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        .box .small {
+            position: relative;
+        }
+
+        .box .small img {
+            width: 100%;
+            display: block;
+        }
+
+        .box .big {
+            width: 290px;
+            height: 290px;
+            position: absolute;
+            top: 0;
+            left: 300px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            display: none;
+        }
+
+        .box .big img {
+            position: absolute;
+        }
+
+        .mask {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 255, 0, .4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="box">
+    <div class="small">
+        <img src="images/small.png" width="300" alt="小图"/>
+        <div class="mask"></div>
+    </div>
+    <div class="big">
+        <img src="images/big.jpg" width="870" alt="大图"/>
+    </div>
+</div>
+<script src="js/common.js"></script>
+<script>
+    // small  鼠标经过的时候 显示 mask 和 big
+    //  当鼠标移动的时候 ，让mask 跟着 鼠标一起动
+    // 当mask移动 ，大图跟着一起动
+
+    // 获取元素
+    var box = my$('box');
+    var small = getFirstElement(box);
+    var big = getLastElement(box);
+    var mask = getLastElement(small);
+    var bigImage = getFirstElement(big);
+
+    // mouseenter  mouseleave
+
+    box.onmouseenter = function () {
+        mask.style.display = 'block';
+        big.style.display = 'block';
+    };
+    box.onmouseleave = function () {
+        mask.style.display = 'none';
+        big.style.display = 'none';
+    };
+
+    /**
+     *  mask移动，大图移动相同比例的距离
+     */
+
+    // 当鼠标移动的时候，mask跟着一起动
+    // 先获取鼠标在 盒子中的位置
+    // 鼠标在页面中的位置  -   盒子的位置
+    box.onmousemove = function (e) {
+        e = e || window.event;
+        var maskX = getPage(e).x - this.offsetLeft;
+        var maskY = getPage(e).y - this.offsetTop;
+
+        // 让鼠标在mask中心点
+        maskX = maskX - mask.offsetWidth / 2;
+        maskY = maskY - mask.offsetHeight / 2;
+
+
+        var maxMaskX = this.offsetWidth - mask.offsetWidth;
+        var maxMaskY = this.offsetHeight - mask.offsetHeight;
+        // 限制mask范围
+        maskX = maskX < 0 ? 0 : maskX;
+        maskY = maskY < 0 ? 0 : maskY;
+
+        maskX = maskX > maxMaskX ? maxMaskX : maskX;
+        maskY = maskY > maxMaskY ? maxMaskY : maskY;
+
+        mask.style.left = maskX + 'px';
+        mask.style.top = maskY + 'px';
+
+
+        // 大图移动的距离    比例
+        // mask移动的距离 / mask移动的最大距离   =  大图移动的距离  / 大图移动的最大距离
+        // 大图移动的最大距离 =   大图的宽  -   大图盒子的宽
+        var maxBigX = bigImage.offsetWidth - big.offsetWidth;
+        var maxBigY = bigImage.offsetHeight - big.offsetHeight;
+        // 设置大图移动
+        bigImage.style.left = -maskX * maxBigX / maxMaskX + 'px';
+        bigImage.style.top = -maskY * maxBigY / maxMaskY + 'px';
+    };
+</script>
+</body>
+</html>

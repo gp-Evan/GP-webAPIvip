@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>拖拽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            height: 60px;
+            background-color: lightseagreen;
+            font-size: 30px;
+            padding: 0 30px;
+            line-height: 60px;
+            color: #fff;
+        }
+
+        .d-box {
+            width: 500px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            transform: translateX(-50%);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .d-box .hd {
+            height: 26px;
+            background-color: darkslategray;
+            font-size: 20px;
+            line-height: 26px;
+            padding: 0 10px;
+            color: #fff;
+            position: relative;
+            cursor: move;
+        }
+
+        .hd h5 {
+            font-weight: normal;
+        }
+
+        .hd span {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .bd {
+            height: 300px;
+            background-color: lightgray;
+            line-height: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">注册信息</div>
+<div class="d-box" id="d_box">
+    <div class="hd" id="drop">
+        <h5>注册信息（可拖拽）</h5>
+        <span id="box_close">【关闭】</span>
+    </div>
+    <div class="bd">内容</div>
+</div>
+<script src="js/common.js"></script>
+<script>
+    /**
+     * 分析：
+     * 1. 鼠标 按下并不松开   所以要注册鼠标按下事件 而不是click事件  mousedown
+     * 2. 鼠标按下之后，移动鼠标 ，盒子跟着动   mousemove
+     *
+     *    改变盒子的坐标
+     *
+     *    当鼠标按下的时候，鼠标在盒子中的位置 和   移动的时候，鼠标在盒子中的位置，是不会发生变化的
+     *    当鼠标 事件发生的时候，能获取 鼠标在页面中的位置，然后求出鼠标距离盒子的位置，
+     *    所以就能算出 移动的距离了。
+     */
+
+    var box = my$('d_box');
+    var drop = my$('drop');
+
+    drop.onmousedown = function (e) {
+        // 当鼠标按下 ，求鼠标在盒子中的位置
+        // 鼠标相对盒子的位置 =  鼠标相对页面的位置 -  盒子相对页面的位置
+        e = e || window.event;
+        var x = getPage(e).x - box.offsetLeft;
+        var y = getPage(e).y - box.offsetTop;
+        console.log(x, y);
+
+        // 鼠标在页面移动
+        document.onmousemove = function (e) {
+            // 当鼠标在页面中移动的时候，求 盒子的位置
+            // 盒子位置 =  鼠标 相对页面的位置-鼠标相对盒子的位置
+            e = e || window.event;
+            var boxX = getPage(e).x - x;
+            var boxY = getPage(e).y - y;
+
+            box.style.left = boxX + 'px';
+            box.style.top = boxY + 'px';
+        };
+    };
+
+    // 最后 当鼠标抬起的时候，不再移动
+    document.onmouseup = function () {
+        document.onmousemove = null;
+    };
+
+    my$('box_close').onclick = function () {
+        box.style.display = 'none';
+    };
+</script>
+
+</body>
+</html>
