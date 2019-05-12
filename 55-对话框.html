@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>对话框</title>
+</head>
+<body>
+<input type="button" value="alert" id="btn1"/>
+<input type="button" value="prompt" id="btn2"/>
+<input type="button" value="confirm" id="btn3"/>
+<script src="js/common.js"></script>
+<script>
+    /**
+     * 浏览器中常用的三种对话框：
+     * 1. alert
+     * 2. prompt
+     * 3. confirm
+     *
+     * 这三种对话框，我们将来都不会去使用
+     * 1. 长得太难看
+     * 2. 用户体验不好，需要去点击
+     *     弹出来一个层，过几秒中 自动消失 （toast）
+     * 3. 在不同浏览器中，样式不一样
+     *     特别在ie中，弹出对话框的时候，是不能关闭页面的
+     *     导致  那种恶意整人程序  （模态框）
+     *     没办法去控制样式，所以将来用另一些方法去实现它们
+     */
+    my$('btn1').onclick = function () {
+        alert('哈哈');
+    };
+    my$('btn2').onclick = function () {
+        // 参数1  提示用户输入的内容
+        // 参数2  默认值
+        // 返回 输入的内容 或者 null
+        var username = prompt('请输入姓名','张三');
+        console.log(username);
+    };
+    my$('btn3').onclick = function () {
+        // 返回一个布尔类型的值
+        var isTrue = confirm('是否要删除数据?');
+        console.log(isTrue);
+    }
+
+    // 知道 这些对话框的存在就ok ，不要求掌握。
+    // 将来，我们将 去模拟这些对话框
+</script>
+</body>
+</html>
