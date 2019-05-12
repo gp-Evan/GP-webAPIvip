@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>BOM</title>
+</head>
+<body>
+<!--<input type="button" value="alert" onclick="alert('hello world');"/>
+<input type="button" value="prompt" onclick="prompt('请输入您的年龄');"/>
+<input type="button" value="confirm" onclick="confirm('请问是否进行删除？');"/>
+<input type="button" value="跳转" onclick="location.href='http://www.gupaoedu.com';"/>-->
+<script>
+    /**
+     * BOM 浏览器对象模型
+     *
+     * 什么是浏览器对象模型？
+     * 把浏览器的一些功能封装成对象的形式【属性和方法】,通过对象，抽象浏览器的一部分功能
+     * 这样，我们就可以以编程的方式进行浏览器中的操作。
+     */
+    // 浏览器 功能：  刷新  前进  后腿
+
+    // 浏览器的顶级对象
+    // window    document也是属于window
+
+    // 在使用 window的成员的时候，可以省略 window
+    // window.alert('hello');
+    // window.document
+
+    // 我们定义的全局变量，都是属于window的属性
+    var age = 18;
+
+    console.log(window.age);
+
+
+    // window中所有的成员
+    console.dir(window);
+    // alert , document....
+
+
+    // window对象 本身就有一个name属性
+    var name = 123;
+    console.log(name); // 有问题吗？
+
+    var age = 18;
+    console.log(age); //  name 的类型 永远都是 string
+
+
+    var top = 'top';
+    console.log(top);  // top本身就是window的一个属性，并且这个属性是不能赋值
+    // 是 window的一个别称。
+    // 所以以后 定义全局变量的时候，一定要注意了。
+    // 为什么要使用沙箱，避免全局污染
+
+    window.console.log('halou'); // console也是window的成员
+</script>
+</body>
+</html>

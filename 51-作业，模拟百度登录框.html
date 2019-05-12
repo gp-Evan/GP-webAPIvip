@@ -111,7 +111,7 @@
         }
 
         .login-bg {
-            background-color: #bbb;
+            background-color: rgba(0, 0, 0, .5);
             width: 100%;
             height: 100%;
             position: fixed;
@@ -172,6 +172,21 @@
             e = e || window.event;
             var loginX = getPage(e).x - x;
             var loginY = getPage(e).y - y;
+
+            var minX = login.offsetWidth / 2;
+            var minY = login.offsetHeight / 2;
+
+            var maxX = document.documentElement.clientWidth - login.offsetWidth / 2;
+            var maxY = document.documentElement.clientHeight - login.offsetHeight / 2;
+
+            // 限制区域
+            loginX = loginX < minX ? minX : loginX;
+            loginY = loginY < minY ? minY : loginY;
+            loginX = loginX > maxX ? maxX : loginX;
+            loginY = loginY > maxY ? maxY : loginY;
+
+            console.log(loginX, loginY);
+
             login.style.left = loginX + 'px';
             login.style.top = loginY + 'px';
         };
