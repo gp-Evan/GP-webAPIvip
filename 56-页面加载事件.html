@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>页面加载事件</title>
+    <script>
+        // 根据DOM渲染的顺序，script标签一般写在body标签之前
+
+        // 当script放到 box之前，将无法获取该元素
+
+        // BOM中提供一个 onload事件 ，用于页面加载完成后执行
+        // 页面加载完成，包括页面所有元素创建完毕，并且引用的外部资源下载完毕（js/css/图片）
+        //window.onload = function(){
+        onload = function () {
+            var box = document.getElementById('box');
+            console.log(box);
+        };
+
+        // onload 不仅仅是window的事件，所有的元素都有onload事件  比如 图片加载完成
+        // 给image标签设置一个默认图片，等需要的图片加载完成之后，在显示  需要的图片 （懒加载原理）
+
+
+        onunload = function () {
+            // 页面卸载的时候会执行
+            //alert('aaa');
+            // 在onunload中，所有的对话框都不能使用，window对象已经被冻结
+            console.log('byebye');
+
+            // 比如 清空购物车
+        };
+    </script>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // 当页面所有元素创建完毕后执行，无关外部资源。所以这种方式效率高
+</script>
+</body>
+</html>
