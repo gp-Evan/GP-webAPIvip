@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>定时器</title>
+</head>
+<body>
+<input type="button" value="开始" id="btn1"/>
+<input type="button" value="取消" id="btn2"/>
+<script src="js/common.js"></script>
+<script>
+    // setTimeout()  定时炸弹  隔多久之后，执行完就销毁了
+    // setInterval()  闹钟     每天都会闹
+
+    // 返回值：  它是一个整数，是定时器的一个标识
+    // 页面中可以存在多个定时器
+    var timerId = null;
+    my$('btn1').onclick = function () {
+        timerId = setTimeout(function () {
+            console.log('爆炸了！');
+        }, 3000);
+        // window.setTimeout  window 可省略
+        // 参数1：  处理函数（回调函数）
+        // 参数2：  间隔时间  单位毫秒
+
+    };
+
+    my$('btn2').onclick = function () {
+        clearTimeout(timerId);
+        console.log('炸弹解除');
+    };
+
+
+    /**
+     * setTimeout的第一个参数，是一个函数
+     * 所以传参的时候，也可以传递一个 命名函数：
+     * 传参的时候，一定不能写 小括号
+     */
+</script>
+</body>
+</html>

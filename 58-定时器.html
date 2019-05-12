@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>定时器</title>
+</head>
+<body>
+<input type="button" value="开始" id="btn1"/>
+<input type="button" value="取消" id="btn2"/>
+<script src="js/common.js"></script>
+<script>
+    // BOM中的第二种定时器
+    // setInterval()
+    var timerId = null;
+    my$('btn1').onclick = function () {
+        timerId = setInterval(function () {
+            console.log('早上八点了');
+        }, 3000);
+    };
+    my$('btn2').onclick = function () {
+        clearInterval(timerId);
+    };
+</script>
+</body>
+</html>

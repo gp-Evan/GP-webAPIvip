@@ -142,3 +142,62 @@ function getPage(e) {
     }
 
 }
+
+/**
+ * 格式化时间
+ * @param date
+ * @returns {*}
+ */
+function fomatDate(date) {
+
+    // 先判断传入的对象是否是时间日期对象
+    // instance of
+    if (!(date instanceof Date)) {
+        console.error('传入的数据不是时间日期类型');
+        return false;
+    }
+    var year = date.getFullYear(),
+        month = date.getMonth() + 1,
+        day = date.getDate(),
+        hours = date.getHours(),
+        minutes = date.getMinutes(),
+        seconds = date.getSeconds();
+
+    /*if (month < 10) {
+        month = '0' + month;
+    }*/
+    month = month < 10 ? '0' + month : month;
+    day = day < 10 ? '0' + day : day;
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+}
+
+
+/**
+ * 计算时间差
+ * @param start
+ * @param end
+ * @returns {*}
+ */
+function getInterval(start, end) {
+    if (!(start instanceof Date) || !(end instanceof Date)) {
+        console.error('传入的参数类型错误');
+        return false;
+    }
+    var interval = (end - start) / 1000;
+    // 求相差的天数，小时，分钟，秒
+    var day, hour, minute, second;
+    day = Math.floor(interval / 60 / 60 / 24);
+    hour = Math.floor(interval / 60 / 60 % 24);
+    minute = Math.floor(interval / 60 % 60);
+    second = Math.floor(interval % 60);
+    return {
+        day: day,
+        hour: hour,
+        minute: minute,
+        second: second
+    };
+}

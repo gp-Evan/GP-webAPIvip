@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>删除成功</title>
+    <style>
+        #tip {
+            width: 260px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, .5);
+            text-align: center;
+            color: #fff;
+            line-height: 50px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="删除" id="btn"/>
+<div id="tip">删除成功</div>
+<script src="js/common.js"></script>
+<script>
+    my$('btn').onclick = function () {
+        my$('tip').style.display = 'block';
+
+        setTimeout(function () {
+            my$('tip').style.display = 'none';
+        }, 3000);
+    };
+</script>
+</body>
+</html>

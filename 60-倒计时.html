@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>倒计时</title>
+    <style>
+        .title {
+            margin-top: 20%;
+            line-height: 60px;
+            text-align: center;
+        }
+
+        .time-item {
+            color: orange;
+            font-size: 60px;
+            text-align: center;
+        }
+
+        .time-item strong span {
+            background-color: orange;
+            color: #fff;
+            padding: 10px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1 class="title">距离光棍节，还有</h1>
+
+<div class="time-item">
+    <span><span id="day">00</span>天</span>
+    <strong><span id="hour">00</span>时</strong>
+    <strong><span id="minute">00</span>分</strong>
+    <strong><span id="second">00</span>秒</strong>
+</div>
+<script src="js/common.js"></script>
+<script>
+    // 目标时间
+    var endDate = new Date('2019-11-11 00:00:00');
+    setInterval(function () {
+        var current = new Date();
+        // 计算两个日期差
+        var interval = getInterval(current, endDate);
+        //console.log(interval);
+        setInnerText(my$('day'),interval.day);
+        setInnerText(my$('hour'),interval.hour);
+        setInnerText(my$('minute'),interval.minute);
+        setInnerText(my$('second'),interval.second);
+    }, 1000);
+</script>
+</body>
+</html>
