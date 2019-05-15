@@ -680,9 +680,12 @@ clearInterval(timerId);
 
 ### Location对象
 
-location对象是window对象下的一个属性，时候的时候可以省略window对象
+location对象是window对象下的一个属性，使用的时候可以省略window对象
 
 location可以获取或者设置浏览器地址栏的URL
+
+- href
+- assign/reload/replace
 
 #### URL
 
@@ -690,6 +693,8 @@ location可以获取或者设置浏览器地址栏的URL
 
 URL的组成:
 
+> http://www.gupaoedu.com:80/a/b/c/index.html?id=1&username=2#aaa
+>
 > scheme:	//host:port/path?query#fragment
 > scheme:	通信协议
 > 				常用的http,ftp,maito等
@@ -703,3 +708,19 @@ URL的组成:
 > 			可选，用于给动态网页传递参数，可有多个参数，用'&'符号隔开，每个参数的名和值用'='符号隔开。例如：name=zs
 > fragment:		信息片断
 > 			字符串，锚点.
+
+### history对象
+
+- back()
+- forward()
+- go()
+
+### navigator对象
+
+- userAgent
+
+通过userAgent可以判断用户浏览器的类型
+
+- platform
+
+通过platform可以判断浏览器所在的系统平台类型.

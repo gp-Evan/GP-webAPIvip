@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>location</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<script src="js/common.js"></script>
+<script>
+    /**
+     * location 对象有很多属性和方法：
+     *
+     *  最根本的作用，是去获取和设置 浏览器地址栏的内容
+     *
+     */
+    console.dir(location);
+    my$('btn').onclick = function () {
+        console.log(location.href);
+
+        // location.href='http://www.gupaoedu.com/';
+
+        // 委派  跟href效果类似
+        // location.assign('http://www.gupaoedu.com/');
+
+        // 替换地址栏中的地址，不记录历史
+        // location.replace('http://www.gupaoedu.com/');
+
+        // 重新加载   类似 f5
+        location.reload();
+        // reload 带参数  true的时候，每次都从服务器获取    false ,如果本地存在缓存，就读取缓存
+        // 类似 ctrl + F5 强制刷新
+    };
+
+    // 演示其它成员
+    // url组成介绍
+</script>
+</body>
+</html>

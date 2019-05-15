@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>简单动画</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #box {
+            position: relative;
+            background-color: lightgreen;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="400" id="btn"/>
+<input type="button" value="800" id="btn1"/>
+<div id="box"></div>
+<script src="js/common.js"></script>
+<script>
+    /**
+     * 1. 点击按钮，让盒子向右移动
+     * 2. 让盒子不停向右移动
+     */
+    var timeId = null;
+    /*my$('btn').onclick = function () {
+        // 并不能通过获取属性的方法去获取原来的位置
+        // my$('box').style.left = '100px';
+
+        // my$('box').style.left = my$('box').offsetLeft + 10 + 'px';
+        var box = my$('box');
+        /!*for (var i = 0; i < 100; i++) {
+            box.style.left = box.offsetLeft + 10 + 'px';
+        }*!/
+        /!*setInterval(function(){
+            box.style.left = box.offsetLeft + 10 + 'px';
+        },30);*!/
+        if (timeId) {
+            // 保证页面始终只有一个定时器执行动画
+            clearInterval(timeId);
+            timeId = null;
+        }
+        // 到一定位置 停止
+        timeId = setInterval(function () {
+            /!**
+             * 每次步进 5
+             * 每次步进6
+             *
+             * 把可变的 挑出来，用变量代替
+             *
+             * 点击多次 发现越来越快
+             *   在开始执行定时器之前，每次都清楚一下上次的定时器
+             *!/
+            var target = 500;
+            var step = 6;
+
+            if (box.offsetLeft >= target) {
+                clearInterval(timeId);
+                box.style.left = target + 'px';
+            }
+            console.log(box.offsetLeft); // 504
+            box.style.left = box.offsetLeft + step + 'px';
+
+
+        }, 30);
+    };*/
+    my$('btn').onclick = function () {
+        animate(my$('box'), 400);
+    };
+    my$('btn1').onclick = function () {
+        animate(my$('box'), 800);
+    };
+
+    // 封装动画的函数
+    function animate(el, target) {
+        if (timeId) {
+            // 保证页面始终只有一个定时器执行动画
+            clearInterval(timeId);
+            timeId = null;
+        }
+        timeId = setInterval(function () {
+            var step = 6;
+
+            if (el.offsetLeft >= target) {
+                clearInterval(timeId);
+                el.style.left = target + 'px';
+                return;
+            }
+            el.style.left = el.offsetLeft + step + 'px';
+        }, 30);
+    }
+</script>
+</body>
+</html>

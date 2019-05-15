@@ -39,16 +39,18 @@
 <script>
     // 目标时间
     var endDate = new Date('2019-11-11 00:00:00');
-    setInterval(function () {
+    getSinglesDay();
+    setInterval(getSinglesDay, 1000);
+    function getSinglesDay() {
         var current = new Date();
         // 计算两个日期差
         var interval = getInterval(current, endDate);
         //console.log(interval);
-        setInnerText(my$('day'),interval.day);
-        setInnerText(my$('hour'),interval.hour);
-        setInnerText(my$('minute'),interval.minute);
-        setInnerText(my$('second'),interval.second);
-    }, 1000);
+        setInnerText(my$('day'), interval.day);
+        setInnerText(my$('hour'), interval.hour);
+        setInnerText(my$('minute'), interval.minute);
+        setInnerText(my$('second'), interval.second);
+    }
 </script>
 </body>
 </html>
