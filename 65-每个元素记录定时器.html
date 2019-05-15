@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>简单动画</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #box {
+            background-color: lightgreen;
+        }
+        .box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        #box1 {
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="400" id="btn"/>
+<input type="button" value="800" id="btn1"/>
+<div id="box" class="box"></div>
+<div id="box1" class="box"></div>
+<script src="js/common.js"></script>
+<script>
+    // var timeId = null;
+    /**
+     * 开启第一个定时器的时候，进入函数，开始执行，
+     * 开启第二个定时器的时候，进入函数，发现timeId不为空，所以清除定时器，
+     * 导致第一个定时器被清除
+     *
+     * 解决： 在每个元素 下 单独挂一个定时器
+     *
+     */
+    my$('btn').onclick = function () {
+        animate(my$('box'), 400);
+        animate(my$('box1'), 800);
+    };
+    my$('btn1').onclick = function () {
+        animate(my$('box'), 800);
+        animate(my$('box1'), 400);
+    };
+
+
+
+
+    function animate(el, target) {
+        if (el.timeId) {
+            clearInterval(el.timeId);
+            el.timeId = null;
+        }
+        el.timeId = setInterval(function () {
+            var step = 6;
+
+            if (el.offsetLeft >= target) {
+                clearInterval(el.timeId);
+                el.style.left = target + 'px';
+                return;
+            }
+            el.style.left = el.offsetLeft + step + 'px';
+        }, 30);
+    }
+    // 发现，倒退的时候，瞬间回来
+</script>
+</body>
+</html>
