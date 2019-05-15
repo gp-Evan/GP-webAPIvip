@@ -2,16 +2,18 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8"/>
-    <title>简单动画</title>
+    <title>从大到小的动画</title>
     <style>
         #box {
             background-color: lightgreen;
         }
+
         .box {
             position: relative;
             width: 100px;
             height: 100px;
         }
+
         #box1 {
             background-color: lightpink;
         }
@@ -24,15 +26,6 @@
 <div id="box1" class="box"></div>
 <script src="js/common.js"></script>
 <script>
-    // var timeId = null;
-    /**
-     * 开启第一个定时器的时候，进入函数，开始执行，
-     * 开启第二个定时器的时候，进入函数，发现timeId不为空，所以清除定时器，
-     * 导致第一个定时器被清除
-     *
-     * 解决： 在每个元素 下 单独挂一个定时器
-     *
-     */
     my$('btn').onclick = function () {
         animate(my$('box'), 400);
         animate(my$('box1'), 800);
@@ -42,18 +35,26 @@
         animate(my$('box1'), 400);
     };
 
-
-
-
     function animate(el, target) {
         if (el.timeId) {
             clearInterval(el.timeId);
             el.timeId = null;
         }
         el.timeId = setInterval(function () {
-            var step = 6;
+            var step = 10;
+            var current = el.offsetLeft;
+            if (current > target) {
+                step = -Math.abs(step);
+            }
 
-            if (el.offsetLeft >= target) {
+            // 当从 400 - 800的时候 执行动画
+            // 从 800 - 400 的时候，不执行动画
+            // 分析 如果当前位置 比 目标位置，此时要递减，所以把 step 变成负值
+
+            // 何时停止定时器？
+            // 当前位置 与 目标位置的值 的距离  与step作比较，小于step的时候，停止定时器，并直接移动到目标位置
+
+            if (Math.abs(target - current) < Math.abs(step)) {
                 clearInterval(el.timeId);
                 el.style.left = target + 'px';
                 return;
@@ -61,7 +62,6 @@
             el.style.left = el.offsetLeft + step + 'px';
         }, 30);
     }
-    // 发现，倒退的时候，瞬间回来
 </script>
 </body>
 </html>
