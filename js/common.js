@@ -201,3 +201,28 @@ function getInterval(start, end) {
         second: second
     };
 }
+
+/**
+ * 匀速移动
+ * @param el
+ * @param target
+ */
+function move(el, target) {
+    if (el.timeId) {
+        clearInterval(el.timeId);
+        el.timeId = null;
+    }
+    el.timeId = setInterval(function () {
+        var step = 10;
+        var current = el.offsetLeft;
+        if (current > target) {
+            step = -Math.abs(step);
+        }
+        if (Math.abs(target - current) < Math.abs(step)) {
+            clearInterval(el.timeId);
+            el.style.left = target + 'px';
+            return;
+        }
+        el.style.left = el.offsetLeft + step + 'px';
+    }, 10);
+}
